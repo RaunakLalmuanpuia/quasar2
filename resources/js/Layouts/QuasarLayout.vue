@@ -122,6 +122,11 @@
                     :href="route('scanQr')"
                     label="Scan QR"
                 />
+                <q-route-tab
+                    v-if="$page.props.user.roles.includes('admin')"
+                    :href="route('rolesUser')"
+                    label="Roles And Users"
+                />
             </q-tabs>
         </q-header>
 

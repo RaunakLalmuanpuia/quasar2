@@ -113,5 +113,10 @@ Route::post('payment', [PaytmController::class, 'pay'])->name('make.payment');
 Route::get('showqr', [AttendenceController::class, 'showQr'])->name('showQr');
 Route::get('scanqr', [AttendenceController::class, 'scanQr'])->name('scanQr');
 Route::post('attendence', [AttendenceController::class, 'markAttendence'])->name('attendence');
-
 Route::post('/verify-password', [AttendenceController::class, 'verifyPassword'])->name('verifyPassword');
+
+
+Route::get('role', [UserController::class, 'rolesUser'])->name('rolesUser');
+Route::post('role', [UserController::class, 'storeRole'])->name('storeRole');
+Route::post('role/{id}', [UserController::class, 'updateRole'])->name('updateRole');
+Route::delete('role/{role}', [UserController::class, 'destroyRole'])->name('destroyRole');

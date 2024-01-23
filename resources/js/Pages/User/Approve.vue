@@ -14,7 +14,7 @@
                         :key="user.id"
                     >
                         <div class="p-4 mb-4 border border-gray-300 rounded-md">
-                            <q-btn @click="openPrompt(user)">
+                            <div @click="openPrompt(user)">
                                 <div class="flex flex-col items-start gap-2">
                                     <span class="font-bold">Name: {{
                                         user.users.name
@@ -27,7 +27,7 @@
                                         user.role_status
                                     }}</span>
                                 </div>
-                            </q-btn>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -75,27 +75,22 @@ const openPrompt = (user) => {
     selectedUser.value = user.id;
     console.log(selectedUser.value);
     prompt.value = true;
-//   if (form.status !== "") {
-//         form.post(route("users.update"), user);
-//     } else if (form.status === "") {
-//         $q.notify({
-//             message: "Please select a status for the verification",
-//             color: "purple",
-//             position: "top",
-//             actions: [{ label: "Dismiss", color: "white" }],
-//         });
-//     }
-  // Additional logic or actions related to opening the prompt
 };
 const onSubmit = () => {
     console.log(selectedUser.value);
     if (form.status !== "") {
         form.put(route("users.update", selectedUser.value));
+        $q.notify({
+            message: "Role succesfully Applied",
+            color: "purple",
+            position: "bottom",
+            actions: [{ label: "Dismiss", color: "white" }],
+        });
     } else if (form.status === "") {
         $q.notify({
             message: "Please select a status for the verification",
-            color: "purple",
-            position: "top",
+            color: "red",
+            position: "bottom",
             actions: [{ label: "Dismiss", color: "white" }],
         });
     }
